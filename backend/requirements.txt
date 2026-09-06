@@ -7,4 +7,4 @@ daphne>=4.2
 channels-redis>=4.3
 python-dotenv>=1.1
 psycopg[binary]>=3.2
-gunicorn
+gunicorn==23.0.0

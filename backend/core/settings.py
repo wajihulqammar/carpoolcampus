@@ -35,7 +35,23 @@ ALLOWED_HOSTS = [host.strip() for host in os.getenv('ALLOWED_HOSTS', 'localhost,
 CORS_ALLOWED_ORIGINS = [origin.strip() for origin in os.getenv('CORS_ALLOWED_ORIGINS', '').split(',') if origin.strip()]
 CSRF_TRUSTED_ORIGINS = [origin.strip() for origin in os.getenv('CSRF_TRUSTED_ORIGINS', '').split(',') if origin.strip()]
 
+INSTALLED_APPS = [
+    ...,
+    "corsheaders",
+]
 
+MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",  # Yeh CommonMiddleware se UPAR hona chahiye
+    "django.middleware.common.CommonMiddleware",
+    ...,
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "https://carpoolcampus.vercel.app",
+]
+
+# Agar cookies/sessions use kar rahe ho (JWT token headers use kar rahe ho to zaroorat nahi):
+CORS_ALLOW_CREDENTIALS = True
 # Application definition
 
 INSTALLED_APPS = [
